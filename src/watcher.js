@@ -40,6 +40,7 @@ function prepareConfig(config) {
 }
 
 export default function createWatcher(model, config) {
+  console.log('watcher created')
   const state = {
     model: [...model],
     store: {},

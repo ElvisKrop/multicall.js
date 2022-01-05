@@ -1,24 +1,21 @@
 {
-  "name": "@makerdao/multicall",
+  "name": "@elvis-krop/multicall",
   "version": "0.12.0",
   "description": "A blockchain state management library for dapps.",
   "contributors": [
-    "Michael Elliot <mike@makerdao.com>",
-    "Joshua Levine <joshua@makerdao.com>",
-    "Lawrence Wang <lawrence@makerdao.com>"
+    "Nikita Zasimuk <nzasimuk@gmail.com>"
   ],
   "license": "MIT",
   "keywords": [
-    "multicall",
-    "makerdao"
+    "multicall"
   ],
-  "homepage": "https://github.com/makerdao/multicall.js#readme",
+  "homepage": "https://github.com/elviskrop/multicall.js#readme",
   "bugs": {
-    "url": "https://github.com/makerdao/multicall.js/issues"
+    "url": "https://github.com/elviskrop/multicall.js/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/makerdao/multicall.js.git"
+    "url": "https://github.com/elviskrop/multicall.js.git"
   },
   "main": "dist/multicall.cjs.js",
   "types": "types/multicall.d.ts",
