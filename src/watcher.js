@@ -217,6 +217,7 @@ export default function createWatcher(model, config) {
   }
 
   const watcher = {
+    state,
     tap(transform) {
       console.log('multicall.js:: watcher.tap() called');
       log('watcher.tap() called');
