@@ -1,6 +1,6 @@
 {
   "name": "@elvis-krop/multicall",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "A blockchain state management library for dapps.",
   "contributors": [
     "Nikita Zasimuk <nzasimuk@gmail.com>"

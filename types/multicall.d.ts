@@ -1,10 +1,12 @@
 /// <reference types="node"/>
 
-declare module '@makerdao/multicall' {
+declare module '@elvis-krop/multicall' {
   import { BigNumber } from 'bignumber.js';
 
+  export type PresetType = 'mainnet' | 'kovan' | 'rinkeby' | 'goerli' | 'xdai' | 'ropsten' | 'mumbai' | 'matic';
+
   export interface IConfig {
-    preset: 'mainnet' | 'kovan' | 'rinkeby' | 'goerli' | 'xdai' | 'ropsten';
+    preset: PresetType;
     rpcUrl: string;
     multicallAddress: string;
     interval: number;
@@ -83,7 +85,7 @@ declare module '@makerdao/multicall' {
   }
 
   export interface IWatcher {
-    initialFetch: Promise;
+    initialFetch: Promise<void>;
 
     schemas: Partial<ICall>[];
 

@@ -22,5 +22,9 @@
   "mumbai": {
     "multicall": "0xB1fF10607cad4ad353418F33ae1a40cccA82F6fF",
     "rpcUrl": "https://rpc-mumbai.matic.today"
+  },
+  "matic": {
+    "multicall": "0xed386Fe855C1EFf2f843B910923Dd8846E45C5A4",
+    "rpcUrl": "https://rpc-mainnet.matic.network"
   }
 }

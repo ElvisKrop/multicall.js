@@ -40,7 +40,7 @@ function prepareConfig(config) {
 }
 
 export default function createWatcher(model, config) {
-  console.log('watcher created')
+  console.log('multicall.js :: watcher created')
   const state = {
     model: [...model],
     store: {},
@@ -218,12 +218,14 @@ export default function createWatcher(model, config) {
 
   const watcher = {
     tap(transform) {
+      console.log('multicall.js:: watcher.tap() called');
       log('watcher.tap() called');
       const nextModel = transform([...state.model]);
       state.model = [...nextModel];
       return this.poll();
     },
     poll() {
+      console.log('multicall.js:: watcher.poll() called');
       log('watcher.poll() called');
       let resolveFetchPromise;
       const fetchPromise = new Promise(resolve => {
@@ -238,6 +240,7 @@ export default function createWatcher(model, config) {
       return Promise.resolve();
     },
     subscribe(listener) {
+      console.log('multicall.js:: watcher.subscribe() called');
       const id = state.id++;
       subscribe(listener, id, false);
       return {
@@ -247,6 +250,7 @@ export default function createWatcher(model, config) {
       };
     },
     batch() {
+      console.log('multicall.js:: watcher.batch() called');
       return {
         subscribe(listener) {
           const id = state.id++;
@@ -260,6 +264,7 @@ export default function createWatcher(model, config) {
       };
     },
     onNewBlock(listener) {
+      console.log('multicall.js:: watcher.onNewBlock() called');
       const id = state.id++;
       state.latestBlockNumber && listener(state.latestBlockNumber);
       state.listeners.block.push({ listener, id });
@@ -270,6 +275,7 @@ export default function createWatcher(model, config) {
       };
     },
     onPoll(listener) {
+      console.log('multicall.js:: watcher.onPoll() called');
       const id = state.id++;
       state.listeners.poll.push({ listener, id });
       return {
@@ -288,6 +294,7 @@ export default function createWatcher(model, config) {
       };
     },
     start() {
+      console.log('multicall.js:: watcher.start() called');
       log('watcher.start() called');
       state.watching = true;
       if (!state.ws || state.ws.readyState === WebSocket.OPEN) {
@@ -300,6 +307,7 @@ export default function createWatcher(model, config) {
       return state.initialFetchPromise;
     },
     stop() {
+      console.log('multicall.js:: watcher.stop() called');
       log('watcher.stop() called');
       clearTimeout(state.handler);
       state.handler = null;
@@ -309,6 +317,7 @@ export default function createWatcher(model, config) {
     },
     recreate(model, config) {
       log('watcher.recreate() called');
+      console.log('multicall.js:: watcher.recreate() called');
       clearTimeout(state.handler);
       state.handler = null;
       clearTimeout(state.wsReconnectHandler);
@@ -334,9 +343,11 @@ export default function createWatcher(model, config) {
         });
         return fetchPromise;
       }
+      console.log('multicall.js :: new watcher:', watcher);
       return Promise.resolve();
     },
     awaitInitialFetch() {
+      console.log('multicall.js:: watcher.awaitInitialFetch() called');
       return state.initialFetchPromise;
     },
     get initialFetch() {

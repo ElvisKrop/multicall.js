@@ -1,21 +1,36 @@
-name: Publish NPM
+name: Publish to NPM registry
 
 on:
-  workflow_dispatch
+  release:
+    types: [ published ]
+  workflow_dispatch:
 
 jobs:
-  punblish:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: 'yarn'
           registry-url: https://registry.npmjs.org/
-      - run: yarn install
-#      - run: yarn test
-#      - run: yarn clean
-#      - run: yarn build
-      - run: yarn publish --access public
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn --frozen-lockfile --silent
+
+      - name: Build
+        run: yarn build
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Publish to npmjs registry
+        run: yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
