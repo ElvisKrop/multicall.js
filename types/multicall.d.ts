@@ -110,6 +110,8 @@ declare module '@elvis-krop/multicall' {
     stop(): undefined;
 
     awaitInitialFetch(): Promise<undefined>;
+
+    unsubscribeFromAll(): void;
   }
 
   export function aggregate(calls: Partial<ICall>[], config: Partial<IConfig>): Promise<IResponse>;

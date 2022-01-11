@@ -351,6 +351,12 @@ export default function createWatcher(model, config) {
       console.log('multicall.js:: watcher.awaitInitialFetch() called');
       return state.initialFetchPromise;
     },
+    unsubscribeFromAll() {
+      state.listeners.subscribe = []
+      state.listeners.block = []
+      state.listeners.error = []
+      state.listeners.poll = []
+    },
     get initialFetch() {
       return state.initialFetchPromise;
     },
