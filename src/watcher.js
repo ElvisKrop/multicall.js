@@ -205,6 +205,11 @@ export default function createWatcher(model, config) {
         log('Error: %s', err.message);
         state.listeners.error.forEach(({ listener }) => listener(err, this.state));
         if (!this.state.handler) return;
+
+        if (this.retry && this.retry > 2) {
+          clearTimeout(this.state.handler);
+          return;
+        }
         // Retry on error
         log(`Error occured, retrying in ${this.state.config.errorRetryWait / 1000} seconds`);
         poll.call({
