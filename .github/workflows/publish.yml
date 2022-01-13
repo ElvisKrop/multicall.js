@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-package:
-    name: Build and publish {{pkg.version}}
+    name: Build and publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
