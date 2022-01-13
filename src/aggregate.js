@@ -1,4 +1,4 @@
-import { id as keccak256 } from 'ethers/utils/hash';
+import { id as keccak256 } from 'ethers/lib/utils';
 import invariant from 'invariant';
 import { strip0x, ethCall, encodeParameters, decodeParameters } from './helpers.js';
 import memoize from 'lodash/memoize';

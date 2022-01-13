@@ -342,6 +342,7 @@ export default function createWatcher(model, config) {
           interval: 0,
           resolveFetchPromise
         });
+        console.log('multicall.js :: new watcher:', watcher);
         return fetchPromise;
       }
       console.log('multicall.js :: new watcher:', watcher);
